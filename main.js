@@ -1,8 +1,8 @@
 const totalCost = document.getElementById('total-cost');
 const tableData = document.getElementById('table-data');
 let totalPrice;
-let userGiftInfo
-
+let userGiftInfo;
+let links;
 
 function fetchData() {
 fetch("https://mysterious-mesa-00016.herokuapp.com/items")
@@ -13,13 +13,13 @@ fetch("https://mysterious-mesa-00016.herokuapp.com/items")
 
 
 function displayInfo(data) {
-  console.log(data)
   tableData.innerHTML = "";
   data.forEach(userInfo => {
+    links = userInfo.link === "" ? userInfo.name : `<a href=${userInfo.link}>${userInfo.name}</a>`
     tableData.innerHTML += `
     <tr>
       <td>${userInfo.recipient}</td>
-      <td>${userInfo.name}</td>
+      <td>${links}</td>
       <td>$${userInfo.priceInDollars}</td>
       <td><input type="checkbox"></td>
       </tr>
