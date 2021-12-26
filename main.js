@@ -1,5 +1,6 @@
 const totalCost = document.getElementById('total-cost');
 const tableData = document.getElementById('table-data');
+const checkbox = document.querySelectorAll('.checkbox');
 let totalPrice;
 let userGiftInfo;
 let links;
@@ -11,6 +12,12 @@ fetch("https://mysterious-mesa-00016.herokuapp.com/items")
 .catch(err => console.log(err,"Something happen"))
 } 
 
+// checkbox.addEventListener('click', e => {
+//     if(e.target.checked) {
+//       totalprice -= userGiftInfo.priceInDollars
+//     } else {
+//       totalPrice;
+//     }
 
 function displayInfo(data) {
   tableData.innerHTML = "";
@@ -30,8 +37,9 @@ function displayInfo(data) {
     acc += userInfo.priceInDollars
     return acc;
   }, 0);
-  totalCost.innerText = `$ ${totalPrice}`;
 
-}
+ 
+  totalCost.innerText = `$ ${totalPrice}`;
+  };
 
 fetchData();
